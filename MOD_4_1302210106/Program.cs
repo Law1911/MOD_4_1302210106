@@ -29,7 +29,7 @@ namespace MOD_4_1302210106
             }
             else
             {
-                Console.WriteLine("Kode dari Buah"+ Buah + " tidak terdaftar");
+                Console.WriteLine("Kode "+ Buah + " tidak terdaftar");
             }
         }
 
