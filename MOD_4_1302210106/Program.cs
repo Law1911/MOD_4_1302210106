@@ -45,10 +45,83 @@ namespace MOD_4_1302210106
             Console.Write("Masukan Buah yang ingin dilihat Kode nya : ");
             String buah = Console.ReadLine();
             kode.getKodeBuah(buah);
+
+            Console.WriteLine("=============================Status player===========================");
+
+            PosisiKarakterGame player = new PosisiKarakterGame();
+            player.gerak();
         }
     }
 
 
+
+
+    class PosisiKarakterGame
+    {
+        enum State {Jongkok, Tengkurap, Berdiri, Terbang };
+
+        public void gerak()
+        {
+            State state = State.Jongkok;
+            String[] Player_stat = { "Jongkok", "Tengkurap", "Berdiri", "Terbang" };
+
+
+            while (true)
+            {
+
+                Console.WriteLine("Posisi player " + Player_stat[(int)state]);
+                Console.Write("Masukan : ");
+                String keyword = Console.ReadLine();
+                switch (state)
+                {
+                    case State.Tengkurap:
+                        if (keyword == "W")
+                        {
+                            Console.WriteLine("Posisi istirahat");
+                            state = State.Jongkok;
+                        }
+                        break;
+                case State.Jongkok:
+                        if (keyword == "W")
+                        {
+                            state= State.Berdiri;
+                        }
+                        if (keyword == "S")
+                        {
+                            state = State.Tengkurap;
+                        }
+                        break;
+                 case State.Berdiri:
+                        if (keyword == "W")
+                        {
+                            state = State.Terbang; 
+                            Console.WriteLine("Posisi Standby");
+                        }
+                        if (keyword == "S")
+                        {
+                            state = State.Jongkok;
+                        }
+                        break;
+                 case State.Terbang:
+                        
+                        if (keyword == "S")
+                        {
+                            state = State.Berdiri;
+                        }
+                        if (keyword == "x")
+                        {
+                            state = State.Jongkok;
+                        }
+                        break;
+
+                }
+              
+
+
+
+            }
+        }
+    }
 
 
 
